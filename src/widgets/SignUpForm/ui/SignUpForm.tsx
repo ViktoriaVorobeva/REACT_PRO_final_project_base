@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
@@ -21,6 +21,8 @@ import { getMessageFromError } from '../../../shared/utils';
 import { useSignUpMutation } from '../../../shared/store/api/authApi';
 
 export const SignUpForm: FC = () => {
+	const inputRef = useRef<HTMLDivElement>(null);
+	
 	const dispatch = useDispatch();
 	// navigate поможет сделать редирект в нужный момент
 	const navigate = useNavigate();
@@ -73,6 +75,12 @@ export const SignUpForm: FC = () => {
 		}
 	};
 
+	useEffect(() => {
+		if(inputRef.current) {
+			inputRef.current.focus();
+		}
+	  }, []);
+
 	return (
 		<Container component='main' maxWidth='xs'>
 			<Box
@@ -110,6 +118,7 @@ export const SignUpForm: FC = () => {
 								error={!!errors.email?.message}
 								helperText={errors.email?.message}
 								{...field}
+								inputRef={inputRef}
 							/>
 						)}
 					/>

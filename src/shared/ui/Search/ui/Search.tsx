@@ -1,12 +1,15 @@
 import s from './Search.module.css';
-import { useProductsSearchForm } from '../hooks/usePostsSearchForm';
+import { SetStateAction, useCallback, Dispatch, FC } from 'react';
 
-export const Search = () => {
-	const { searchValue, setSearchValue } = useProductsSearchForm();
+interface ISearch {
+	searchValue: string;
+	setSearchValue: Dispatch<SetStateAction<string>>
+}
 
-	const handleClearSearchText = () => {
+export const Search: FC<ISearch> = ({searchValue, setSearchValue}) => {
+	const handleClearSearchText = useCallback(() => {
 		setSearchValue('');
-	};
+	}, []);
 
 	return (
 		<form className={s['search']}>

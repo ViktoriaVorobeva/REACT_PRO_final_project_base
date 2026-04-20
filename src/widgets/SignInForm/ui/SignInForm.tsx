@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import {
 	Avatar,
 	Box,
@@ -22,6 +22,8 @@ import { userActions } from '../../../shared/store/slices/user';
 import { getMessageFromError } from '../../../shared/utils';
 
 export const SignInForm: FC = () => {
+	const inputRef = useRef<HTMLDivElement>(null);
+
 	const dispatch = useDispatch();
 	const location = useLocation();
 	// navigate поможет сделать редирект в нужный момент
@@ -79,6 +81,12 @@ export const SignInForm: FC = () => {
 		}
 	};
 
+	useEffect(() => {
+		if(inputRef.current) {
+			inputRef.current.focus();
+		}
+	  }, []);
+
 	return (
 		<Container component='main' maxWidth='xs'>
 			<Box
@@ -116,6 +124,7 @@ export const SignInForm: FC = () => {
 								error={!!errors.email?.message}
 								helperText={errors.email?.message}
 								{...field}
+								inputRef={inputRef}
 							/>
 						)}
 					/>

@@ -8,9 +8,11 @@ import { userSelectors } from '../../../shared/store/slices/user';
 import { isLiked } from '../../../shared/utils';
 import { useProducts } from '../../../shared/store/hooks/useProducts';
 import { cartSelectors } from '../../../shared/store/slices/cart';
+import { useProductsSearchForm } from '../../../features/Search';
 
 export const Header = () => {
 	const { products } = useProducts();
+	const {searchValue, setSearchValue,} = useProductsSearchForm()
 	const user = useAppSelector(userSelectors.getUser);
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
 
@@ -24,7 +26,7 @@ export const Header = () => {
 		<header className={s.header}>
 			<div className={classNames('container', s.header__wrapper)}>
 				<Logo />
-				<Search />
+				<Search searchValue={searchValue} setSearchValue={setSearchValue} />
 				<div className={s['header__icons-menu']}>
 					<Link className={s['header__favorites-link']} to='/favorites'>
 						<svg

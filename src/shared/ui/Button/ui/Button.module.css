@@ -1,0 +1,38 @@
+.btn {
+	position: static;
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: #1a1a1a;
+	font-weight: 700;
+	font-size: 16px;
+    text-decoration: none;
+	font-family: 'Arial', 'Helvetica', sans-serif;
+	font-style: normal;
+	line-height: 20px;
+	border-radius: 55px;
+	cursor: pointer;
+}
+
+.btn:disabled {
+	opacity: 0.5;
+}
+
+.primary {
+	background: #ffe44d;
+	border: none;
+}
+
+.primary:hover {
+	background-color: #ffaa0d;
+	color: #f44336;
+}
+
+.secondary {
+	background: white;
+	border: 0.5px solid #cfd8dc;
+}
+
+.secondary:hover {
+	border-color: #7b8e98;
+}
