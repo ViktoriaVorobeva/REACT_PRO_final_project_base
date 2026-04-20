@@ -1,3 +1,5 @@
+[Воробьева финальный проект React.pptx](https://github.com/user-attachments/files/26906350/React.pptx)
+
 # Что сделано
 - Частично доработана архитектура по FSD
 - Частично оптимизация рендеров (useMemo, useCallback, memo)
